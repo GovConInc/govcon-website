@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop offset="0" stop-color="#0a1020"/>
+      <stop offset="1" stop-color="#0f1b3d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#c1121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="80" width="1040" height="470" rx="32" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/>
+  <rect x="120" y="140" width="64" height="64" rx="16" fill="url(#accent)"/>
+  <text x="210" y="190" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="52" fill="#ffffff" font-weight="800">GovCon Inc.</text>
+  <text x="120" y="265" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="28" fill="rgba(255,255,255,0.9)" font-weight="600">Win government business. Stay compliant. Scale.</text>
+  <text x="120" y="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="22" fill="rgba(255,255,255,0.85)">GSA MAS • OASIS+ • Contract Management • Training • SBA Certifications • Opportunity Intelligence</text>
+  <rect x="120" y="390" width="520" height="10" rx="5" fill="url(#accent)"/>
+  <text x="120" y="465" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="20" fill="rgba(255,255,255,0.85)">(813) 665-0308 • Info@GovCon.Info</text>
+</svg>
