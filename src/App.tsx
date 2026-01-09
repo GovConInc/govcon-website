@@ -1,30 +1,38 @@
-import { Route, Routes } from "react-router-dom";
+{
+type: "file_update",
+fileName: "src/App.tsx",
+fileContent: `import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./routes/Home";
-import Resources from "./routes/Resources";
 import Services from "./routes/Services";
 import About from "./routes/About";
 import Contact from "./routes/Contact";
 import NotFound from "./routes/NotFound";
+
+// New Resource Pages
 import ResourceSAMDBSFema from "./routes/ResourceSAMDBSFema";
+import ResourceGSA from "./routes/ResourceGSA";
+import ResourceOpportunities from "./routes/ResourceOpportunities";
+import ResourceBidOpps from "./routes/ResourceBidOpps";
+import ResourceProposals from "./routes/ResourceProposals";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-
-        {/* future pages (kept as routes so the menu can be "to a T") */}
+        
+        {/* Redirect generic /resources to the first resource or a landing (optional) */}
+        <Route path="/resources" element={<ResourceSAMDBSFema />} />
+        
         <Route path="/resources/sam-dsbs-fema" element={<ResourceSAMDBSFema />} />
-        <Route path="/resources/gsa-vehicles" element={<Resources initialSection="gsa" />} />
-        <Route path="/resources/understand-opportunities" element={<Resources initialSection="opps" />} />
-        <Route path="/resources/find-bid-opportunities" element={<Resources initialSection="bids" />} />
-        <Route path="/resources/writing-proposals" element={<Resources initialSection="proposals" />} />
+        <Route path="/resources/gsa-vehicles" element={<ResourceGSA />} />
+        <Route path="/resources/understand-opportunities" element={<ResourceOpportunities />} />
+        <Route path="/resources/find-bid-opportunities" element={<ResourceBidOpps />} />
+        <Route path="/resources/writing-proposals" element={<ResourceProposals />} />
 
+        <Route path="/services" element={<Services />} />
+        
         <Route path="/services/gsa-mas-submission" element={<Services initialTab="gsa-mas" />} />
         <Route path="/services/contract-management" element={<Services initialTab="contract-management" />} />
         <Route path="/services/oasis-and-others" element={<Services initialTab="oasis" />} />
@@ -38,8 +46,11 @@ export default function App() {
         <Route path="/programs/prime" element={<Services initialTab="prime" />} />
         <Route path="/programs/vip" element={<Services initialTab="vip" />} />
 
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
+}`
 }
