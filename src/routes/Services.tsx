@@ -292,6 +292,3 @@ export default function Services({ initialTab = "all" }: { initialTab?: string }
     </>
   );
 }
-  );
-}`
-
