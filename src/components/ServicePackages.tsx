@@ -1,7 +1,4 @@
-{
-type: "file_create",
-fileName: "src/components/ServicePackages.tsx",
-fileContent: `import { CheckCircle2, ShieldCheck, Rocket, Crown } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Rocket, Crown } from "lucide-react";
 import Card from "./Card";
 import { Button } from "./Button";
 import { cn } from "./cn";
@@ -109,5 +106,4 @@ export default function ServicePackages() {
       ))}
     </div>
   );
-}`
 }
