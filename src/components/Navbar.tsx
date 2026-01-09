@@ -1,7 +1,4 @@
-{
-type: "file_update",
-fileName: "src/components/Navbar.tsx",
-fileContent: `import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { LinkButton } from "./Button";
 import { BRAND, LINKS } from "../lib/constants";
@@ -187,5 +184,4 @@ export default function Navbar() {
       ) : null}
     </header>
   );
-}`
 }
