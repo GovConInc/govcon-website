@@ -1,8 +1,12 @@
-import { useState } from "react";
+{
+type: "file_create",
+fileName: "src/routes/ResourceSAMDBSFema.tsx",
+fileContent: `import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp, CheckCircle, AlertCircle, ExternalLink } from "lucide-react";
 import Card from "../components/Card";
 import { Button } from "../components/Button";
+import { Helmet } from "react-helmet-async";
 
 interface ResourceLink {
   title: string;
@@ -14,33 +18,32 @@ interface ResourceLink {
 interface Section {
   id: string;
   title: string;
-  icon: React.ReactNode;
-  content: React. ReactNode;
+  content: React.ReactNode;
 }
 
 const samResources: ResourceLink[] = [
   {
-    title: "SAM. gov Main Portal",
+    title: "SAM.gov Main Portal",
     url: "https://sam.gov",
-    description: "The official System for Award Management portal where all federal contracting registration begins",
+    description: "The official System for Award Management portal where all federal contracting registration begins.",
     type: "government",
   },
   {
     title: "SAM.gov Registration Guide",
     url: "https://www.sam.gov/content/dam/SAM/documents/SAM%20Registration%20Guide.pdf",
-    description: "Official step-by-step guide for SAM registration from the federal government",
+    description: "Official step-by-step guide for SAM registration from the federal government.",
     type: "guide",
   },
   {
     title: "CAGE Code Information",
     url: "https://www.sam.gov/content/pages/CAGE-CodeFAQs",
-    description: "Understanding CAGE codes and how to register for one through SAM",
+    description: "Understanding CAGE codes and how to register for one through SAM.",
     type: "guide",
   },
   {
     title: "Exclusions Database",
     url: "https://www.sam.gov/content/pages/Exclusions",
-    description: "Search the exclusions list to ensure your company is not debarred",
+    description: "Search the exclusions list to ensure your company is not debarred.",
     type: "tool",
   },
 ];
@@ -48,65 +51,59 @@ const samResources: ResourceLink[] = [
 const dsbsResources: ResourceLink[] = [
   {
     title: "Dynamic Small Business Search (DSBS)",
-    url: "https://dsbs.sba.gov/search/dsp_dsbs. cfm",
-    description: "Official SBA portal for small business certifications and registrations",
+    url: "https://dsbs.sba.gov/search/dsp_dsbs.cfm",
+    description: "Official SBA portal for small business certifications and registrations.",
     type: "government",
   },
   {
-    title: "DSBS Registration Guide",
-    url: "https://www.sba.gov/document/support--duns-and-bradstreet-d-u-n-s-number-basics",
-    description: "SBA guidance on setting up your DSBS profile with your DUNS number",
+    title: "SBA Size Standards",
+    url: "https://www.sba.gov/document/support--table-size-standards",
+    description: "Check if you qualify as a small business for your specific NAICS codes.",
     type: "guide",
   },
   {
     title: "8(a) Business Development Program",
     url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program",
-    description: "SBA's premier program for small disadvantaged businesses",
+    description: "SBA's premier program for small disadvantaged businesses.",
     type: "guide",
   },
   {
     title: "HUBZone Program",
     url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program",
-    description: "For businesses in Historically Underutilized Business Zones",
+    description: "For businesses in Historically Underutilized Business Zones.",
     type: "guide",
   },
   {
-    title: "Service-Disabled Veteran-Owned Small Business (SDVOSB)",
+    title: "SDVOSB Program",
     url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/service-disabled-veteran-owned-small-business-program",
-    description: "Certification program for veteran-owned small businesses",
+    description: "Certification program for veteran-owned small businesses.",
     type: "guide",
   },
   {
-    title: "Women-Owned Small Business (WOSB)",
+    title: "WOSB Program",
     url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-wosb-federal-contracting-program",
-    description: "Federal contracting program for women-owned businesses",
+    description: "Federal contracting program for women-owned businesses.",
     type: "guide",
   },
 ];
 
 const femaResources: ResourceLink[] = [
   {
-    title:  "FEMA Registration Portal",
-    url: "https://event. dhs.gov/portal/default.aspx",
-    description: "DHS event registration system for FEMA and other federal emergency management certifications",
+    title: "FEMA Registration Portal",
+    url: "https://event.dhs.gov/portal/default.aspx",
+    description: "DHS event registration system for FEMA and other federal emergency management certifications.",
     type: "government",
   },
   {
     title: "Contracting with FEMA",
-    url:  "https://www.fema.gov/disaster/procurement",
-    description: "Overview of FEMA contracting opportunities and vendor registration",
+    url: "https://www.fema.gov/disaster/procurement",
+    description: "Overview of FEMA contracting opportunities and vendor registration.",
     type: "guide",
   },
   {
     title: "Disaster Contracting Vendor Registration",
     url: "https://www.fema.gov/disaster/procurement/contracting-assistance",
-    description: "Register as a disaster recovery contractor with FEMA",
-    type:  "guide",
-  },
-  {
-    title: "Small Business Administration Disaster Assistance",
-    url: "https://www.sba.gov/disaster",
-    description: "SBA resources for disaster-related small business support",
+    description: "Register as a disaster recovery contractor with FEMA.",
     type: "guide",
   },
 ];
@@ -118,40 +115,34 @@ function ResourceLinkCard({ resource }: { resource: ResourceLink }) {
     form: "border-blue-600",
     tool: "border-slate-400",
   };
-
   const typeBgColors = {
     government: "bg-slate-50",
     guide: "bg-red-50",
-    form:  "bg-blue-50",
+    form: "bg-blue-50",
     tool: "bg-slate-50",
   };
-
   const typeLabels = {
     government: "Gov Portal",
     guide: "Guide",
     form: "Form",
     tool: "Tool",
   };
-
   return (
-    <a
-      href={resource.url}
-      target="_blank"
-      rel="noreferrer"
-      className="group block"
-    >
-      <Card className={`p-4 ${typeBgColors[resource.type]}`}>
+    <a href={resource.url} target="_blank" rel="noreferrer" className="group block">
+      <Card className={\`p-4 \${typeBgColors[resource.type]} hover:border-slate-300\`}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-semibold text-slate-900 group-hover:text-gov-blue transition">
+              <h4 className="font-semibold text-slate-900 transition group-hover:text-gov-blue">
                 {resource.title}
               </h4>
-              <ExternalLink className="h-3. 5 w-3.5 text-slate-400 group-hover:text-gov-blue transition" />
+              <ExternalLink className="h-3.5 w-3.5 text-slate-400 transition group-hover:text-gov-blue" />
             </div>
             <p className="mt-1 text-sm text-slate-600">{resource.description}</p>
           </div>
-          <span className={`inline-block rounded-full border-2 ${typeColors[resource. type]} px-2 py-0.5 text-xs font-semibold text-slate-700 whitespace-nowrap flex-shrink-0`}>
+          <span
+            className={\`inline-block flex-shrink-0 whitespace-nowrap rounded-full border-2 \${typeColors[resource.type]} px-2 py-0.5 text-xs font-semibold text-slate-700\`}
+          >
             {typeLabels[resource.type]}
           </span>
         </div>
@@ -166,14 +157,16 @@ function SAMSection() {
       <div>
         <h3 className="text-2xl font-bold text-slate-900">System for Award Management (SAM)</h3>
         <p className="mt-2 text-slate-600">
-          SAM. gov is the single government-wide system that consolidates federal contract management, grants, and other systems into one unified platform.  If you're a government contractor, SAM registration is non-negotiable.
+          SAM.gov is the single government-wide system that consolidates federal contract management,
+          grants, and other systems into one unified platform. If you're a government contractor, SAM
+          registration is non-negotiable.
         </p>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card className="border-gov-red/30 p-6 bg-white">
+        <Card className="border-gov-red/30 bg-white p-6">
           <div className="flex items-start gap-3">
-            <CheckCircle className="h-5 w-5 text-gov-red mt-0.5 flex-shrink-0" />
+            <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-gov-red" />
             <div>
               <h4 className="font-semibold text-slate-900">Why SAM Registration Matters</h4>
               <ul className="mt-2 space-y-2 text-sm text-slate-600">
@@ -187,9 +180,9 @@ function SAMSection() {
           </div>
         </Card>
 
-        <Card className="border-gov-navy/30 p-6 bg-white">
+        <Card className="border-gov-navy/30 bg-white p-6">
           <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-gov-navy mt-0.5 flex-shrink-0" />
+            <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-gov-navy" />
             <div>
               <h4 className="font-semibold text-slate-900">Important Dates & Reminders</h4>
               <ul className="mt-2 space-y-2 text-sm text-slate-600">
@@ -197,7 +190,6 @@ function SAMSection() {
                 <li>• Update business information within 30 days of any changes</li>
                 <li>• Processing typically takes 24-48 hours</li>
                 <li>• Keep your DUNS number and UEI handy</li>
-                <li>• Monitor your UEI carefully (don't share with unauthorized parties)</li>
               </ul>
             </div>
           </div>
@@ -205,73 +197,58 @@ function SAMSection() {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">SAM Registration Step-by-Step Guide</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">SAM Registration Step-by-Step</h4>
         <div className="space-y-3">
           {[
             {
               step: 1,
-              title: "Get Your DUNS Number",
-              details: 
-                "Visit dnb.com and request a DUNS number (free). You'll need this to register on SAM.  If you already have one, have it ready.",
+              title: "Get Your UEI/DUNS",
+              details: "SAM now assigns a Unique Entity ID (UEI). You will get this during the registration process.",
             },
             {
-              step:  2,
-              title: "Create Your SAM. gov Account",
-              details: 
-                'Go to sam.gov and click "Create Account." You\'ll use your email and set a strong password.  Verify your email address.',
+              step: 2,
+              title: "Create Your SAM.gov Account",
+              details:
+                'Go to sam.gov and click "Create Account." You\'ll use Login.gov. Set a strong password and enable 2FA.',
             },
             {
               step: 3,
               title: "Begin Entity Registration",
               details:
-                'Select "Register" and choose your entity type (sole proprietorship, corporation, LLC, etc.). Enter your legal business name and DUNS number.',
+                'Select "Register" and choose your entity type (LLC, Corp, etc.). Enter your legal business name exactly as it appears on tax docs.',
             },
             {
               step: 4,
               title: "Complete Business Information",
-              details: 
-                "Fill in your business address, phone, email, Congressional district, and any additional locations. Be accurate—this is what agencies see.",
+              details: "Fill in your business address, Congressional district, and start date. Accuracy here is critical.",
             },
             {
               step: 5,
-              title: "Add Business Classification",
+              title: "Add NAICS Codes",
               details:
-                "Select your primary NAICS code and secondary codes.  NAICS codes define what your business does (e.g., 541611 = Management Consulting Services).",
+                "Select your primary NAICS code and secondary codes. These define what your business does (e.g., 541611 for Consulting).",
             },
             {
               step: 6,
               title: "Certifications & Representations",
               details:
-                "Attest to your business certifications (8(a), HUBZone, SDVOSB, WOSB, etc.). Only claim certifications you've actually received.",
+                "Attest to your business size and status (Small, Woman-Owned, Veteran-Owned, etc.). Don't guess—check SBA standards.",
             },
             {
               step: 7,
               title: "Point of Contact & Banking",
               details:
-                "Designate your primary points of contact and add banking information for government payments (required for contract awards).",
+                "Designate your primary POCs and add banking info (Electronic Funds Transfer) so the government can pay you.",
             },
             {
               step: 8,
-              title: "Review & Submit",
-              details: 
-                "Review all information for accuracy.  Any errors will delay activation. Submit and wait for your confirmation email.",
+              title: "Submit & Authenticate",
+              details: "Review everything. Submit. You will likely need to perform identity verification via Login.gov.",
             },
-            {
-              step: 9,
-              title: "Authenticate Your Account",
-              details:
-                'SAM requires a Login. gov or some form of strong authentication. Verify your identity to fully activate your registration.',
-            },
-            {
-              step: 10,
-              title: "Activation Complete",
-              details:
-                "Your registration is active when SAM sends a confirmation.  You'll receive a UEI (Unique Entity Identifier). Save this—you'll use it constantly.",
-            },
-          ]. map((item) => (
+          ].map((item) => (
             <div key={item.step} className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-white font-semibold text-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-sm font-semibold text-white">
                   {item.step}
                 </div>
               </div>
@@ -284,22 +261,26 @@ function SAMSection() {
         </div>
       </div>
 
-      <Card className="p-6 border-gov-red bg-red-50">
-        <h4 className="font-semibold text-slate-900 flex items-center gap-2">
+      <Card className="border-gov-red bg-red-50 p-6">
+        <h4 className="flex items-center gap-2 font-semibold text-slate-900">
           <AlertCircle className="h-5 w-5 text-gov-red" />
-          Common SAM Mistakes We See
+          Common SAM Mistakes
         </h4>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
-          <li>❌ <strong>Not matching your name exactly: </strong> If your legal entity is "ABC Corp Inc" on your tax forms, SAM needs "ABC Corp Inc"—not "ABC Corp" or "ABC Corp, Inc."</li>
-          <li>❌ <strong>Wrong NAICS codes:</strong> Agencies filter by NAICS.  Pick codes that genuinely describe your business.  Being too broad = lost bids.</li>
-          <li>❌ <strong>Incomplete certifications:</strong> Don't claim certifications you don't have. Agencies verify, and false claims are a violation.</li>
-          <li>❌ <strong>Outdated information:</strong> Your address changed? Update it immediately.  Same with officers, phone numbers, banking info.</li>
-          <li>❌ <strong>No secondary contact:</strong> If your main point of contact leaves, your account is orphaned.  Always have a backup.</li>
+          <li>
+            ❌ <strong>Name Mismatch:</strong> "ABC Corp Inc" vs "ABC Corp" causes validation errors with the IRS.
+          </li>
+          <li>
+            ❌ <strong>Wrong NAICS:</strong> Picking codes that are too broad or irrelevant hurts your visibility.
+          </li>
+          <li>
+            ❌ <strong>Orphaned Accounts:</strong> Always have a secondary admin in case the primary employee leaves.
+          </li>
         </ul>
       </Card>
 
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">SAM Resources & Tools</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">SAM Resources & Tools</h4>
         <div className="grid gap-3">
           {samResources.map((resource) => (
             <ResourceLinkCard key={resource.url} resource={resource} />
@@ -316,38 +297,22 @@ function DSBSSection() {
       <div>
         <h3 className="text-2xl font-bold text-slate-900">Dynamic Small Business Search (DSBS)</h3>
         <p className="mt-2 text-slate-600">
-          The DSBS is the SBA's system for small business certifications.  While SAM gets you "in the door," DSBS certifications unlock access to set-asides, higher win rates, and specialized programs designed to help small businesses win government business.
+          While SAM gets you "in the door," DSBS is the marketing catalog. Contracting officers use DSBS to find
+          small businesses for set-aside contracts.
         </p>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card className="border-gov-red/30 p-6 bg-white">
+        <Card className="border-gov-red/30 bg-white p-6">
           <div className="flex items-start gap-3">
-            <CheckCircle className="h-5 w-5 text-gov-red mt-0.5 flex-shrink-0" />
+            <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-gov-red" />
             <div>
-              <h4 className="font-semibold text-slate-900">Benefits of DSBS Certification</h4>
+              <h4 className="font-semibold text-slate-900">Why DSBS Matters</h4>
               <ul className="mt-2 space-y-2 text-sm text-slate-600">
-                <li>• Access to "small business set-asides" (20%+ of federal contracts)</li>
-                <li>• Competitive advantage in proposal evaluation</li>
-                <li>• Prime contractor preference in many solicitations</li>
-                <li>• Government agency outreach programs specifically for certified firms</li>
-                <li>• Enhanced visibility in contracting officer searches</li>
-              </ul>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="border-gov-navy/30 p-6 bg-white">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-gov-navy mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-slate-900">DSBS Certification Types</h4>
-              <ul className="mt-2 space-y-2 text-sm text-slate-600">
-                <li>• <strong>8(a):</strong> Socially/economically disadvantaged (9-year program)</li>
-                <li>• <strong>HUBZone:</strong> Located in underutilized geographic areas</li>
-                <li>• <strong>SDVOSB:</strong> Service-disabled veteran-owned</li>
-                <li>• <strong>WOSB: </strong> Women-owned small business</li>
-                <li>• <strong>SDB:</strong> Small disadvantaged business (size matters! )</li>
+                <li>• Access to "set-asides" (23%+ of federal spend)</li>
+                <li>• Competitive advantage in evaluations</li>
+                <li>• Visibility to Prime Contractors looking for subs</li>
+                <li>• Sole-source award eligibility (8a, SDVOSB, WOSB)</li>
               </ul>
             </div>
           </div>
@@ -355,73 +320,40 @@ function DSBSSection() {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">DSBS Registration & Certification Guide</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">SBA Certification Guide</h4>
         <div className="space-y-3">
           {[
             {
-              step:  1,
-              title: "Verify Your Business Size",
-              details: 
-                "Check the SBA size standards for your NAICS code. Size limits vary—manufacturing is often 500 employees, services might be $8.5M revenue.  You must be UNDER the limit.",
+              step: 1,
+              title: "Verify Size Standard",
+              details: "Check the SBA size standard for your primary NAICS. You must be under the revenue/employee cap.",
             },
             {
               step: 2,
-              title: "Ensure You're in SAM",
+              title: "Determine Eligibility",
               details:
-                "DSBS pulls data from SAM. Your SAM registration must be current and active before you can appear in DSBS searches.",
+                "Review requirements for 8(a), HUBZone, SDVOSB, and WOSB. Don't apply if you don't fit—audits are real.",
             },
             {
               step: 3,
-              title: "Have Your DUNS Number Ready",
+              title: "Prepare Documents",
               details:
-                "You'll need your DUNS number (same as SAM). If you don't have one, get it at dnb.com before proceeding.",
+                "Gather tax returns, operating agreements, payroll, and proof of ownership (51%+).",
             },
             {
               step: 4,
-              title: "Determine Your Eligibility",
-              details:
-                "Review each certification type:  8(a) requires disadvantaged status, HUBZone requires location, SDVOSB requires veteran service, WOSB requires female ownership.  Only apply for what you qualify for.",
+              title: "Apply via certify.sba.gov",
+              details: "Most certifications (WOSB, SDVOSB, 8a, HUBZone) now go through the SBA's unified certification portal.",
             },
             {
               step: 5,
-              title: "For 8(a): Submit Your Application",
-              details: 
-                "Visit sba.gov/document/8a-business-development-application. Complete Form 178, business plan, and personal financial disclosures. This is the most involved certification.",
+              title: "Update SAM",
+              details: "Once certified, ensure your SAM profile reflects your new status.",
             },
-            {
-              step: 6,
-              title: "For HUBZone:  Verify Your Address",
-              details:
-                "Confirm your principal place of business qualifies under HUBZone maps at sba.gov/hubzone-maps. At least 35% of employees must work in the HUBZone.",
-            },
-            {
-              step: 7,
-              title: "For SDVOSB:  Provide Veteran Documentation",
-              details:
-                "You'll need DD Form 214 (discharge papers), a notarized affidavit, and tax returns showing at least 51% veteran ownership and control.",
-            },
-            {
-              step: 8,
-              title: "For WOSB: Prove Female Ownership",
-              details: 
-                "Provide personal financial statements, tax returns, and proof that women own and control at least 51% of the business.",
-            },
-            {
-              step: 9,
-              title: "Submit & Wait for Review",
-              details:
-                "Once submitted, processing varies:  8(a) takes 60–90 days, HUBZone 5–10 business days, SDVOSB and WOSB about 15 days.",
-            },
-            {
-              step: 10,
-              title: "Appear in DSBS",
-              details:
-                "Once approved, you'll be searchable in DSBS within 24 hours.  Agencies can now find your certifications directly.",
-            },
-          ]. map((item) => (
+          ].map((item) => (
             <div key={item.step} className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-white font-semibold text-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-sm font-semibold text-white">
                   {item.step}
                 </div>
               </div>
@@ -434,22 +366,8 @@ function DSBSSection() {
         </div>
       </div>
 
-      <Card className="p-6 border-gov-red bg-red-50">
-        <h4 className="font-semibold text-slate-900 flex items-center gap-2">
-          <AlertCircle className="h-5 w-5 text-gov-red" />
-          DSBS Certification Mistakes
-        </h4>
-        <ul className="mt-3 space-y-2 text-sm text-slate-700">
-          <li>❌ <strong>Applying when you're above size standards:</strong> SBA will deny.  Check your size before you apply.</li>
-          <li>❌ <strong>Claiming certifications you don't have:</strong> This is fraud. SBA conducts random audits and penalties are severe.</li>
-          <li>❌ <strong>Not maintaining your address in SAM:</strong> If your office location changes and you claimed HUBZone, your certification can be revoked.</li>
-          <li>❌ <strong>Forgetting annual certifications expire:</strong> Most certifications last 3–5 years. You must recertify or lose the designation.</li>
-          <li>❌ <strong>Missing representation and certifications in SAM:</strong> Even if you're SBA certified, you must also check the box in SAM or agencies won't see it.</li>
-        </ul>
-      </Card>
-
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">DSBS & SBA Resources</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">SBA Resources</h4>
         <div className="grid gap-3">
           {dsbsResources.map((resource) => (
             <ResourceLinkCard key={resource.url} resource={resource} />
@@ -464,40 +382,24 @@ function FEMASection() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-2xl font-bold text-slate-900">FEMA & Disaster Recovery Contracting</h3>
+        <h3 className="text-2xl font-bold text-slate-900">FEMA & Disaster Contracting</h3>
         <p className="mt-2 text-slate-600">
-          FEMA contracting is a specialized market.  Disaster recovery work moves fast, pays well, and is often lucrative for contractors in industries like construction, debris removal, restoration, and emergency services.  But it requires a different registration process.
+          Disaster recovery moves fast. To win FEMA work (debris removal, emergency services, construction),
+          you must be registered <em>before</em> the disaster strikes.
         </p>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card className="border-gov-red/30 p-6 bg-white">
+        <Card className="border-gov-navy/30 bg-white p-6">
           <div className="flex items-start gap-3">
-            <CheckCircle className="h-5 w-5 text-gov-red mt-0.5 flex-shrink-0" />
+            <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-gov-navy" />
             <div>
-              <h4 className="font-semibold text-slate-900">Why FEMA Contracting Matters</h4>
+              <h4 className="font-semibold text-slate-900">FEMA Differences</h4>
               <ul className="mt-2 space-y-2 text-sm text-slate-600">
-                <li>• Fast-moving contracts with urgent timelines</li>
-                <li>• Primarily disaster recovery and emergency services</li>
-                <li>• Geographic flexibility (work where disasters occur)</li>
-                <li>• Substantial contract values for qualified firms</li>
-                <li>• Often less competitive than routine federal contracts</li>
-              </ul>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="border-gov-navy/30 p-6 bg-white">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-gov-navy mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-slate-900">FEMA Registration Differences</h4>
-              <ul className="mt-2 space-y-2 text-sm text-slate-600">
-                <li>• Separate from SAM (though SAM helps)</li>
-                <li>• DHS event registration required</li>
-                <li>• Focus on emergency services and capabilities</li>
-                <li>• Proof of insurance often needed</li>
-                <li>• Registration during active disasters is slower</li>
+                <li>• Separate from SAM (though SAM is needed)</li>
+                <li>• Requires DHS Event Registration</li>
+                <li>• Geographic flexibility is key</li>
+                <li>• Proof of insurance often required upfront</li>
               </ul>
             </div>
           </div>
@@ -505,73 +407,33 @@ function FEMASection() {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">FEMA Registration & Contracting Guide</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">FEMA Registration Steps</h4>
         <div className="space-y-3">
           {[
             {
               step: 1,
-              title: "Confirm You're Eligible",
-              details: 
-                "You don't need to be a small business to contract with FEMA, but you must be licensed in your state for your trade. General contractors need general contractor licenses, debris removal needs appropriate licensing, etc.",
+              title: "Active SAM Registration",
+              details: "Ensure your SAM registration is active. FEMA uses this for payment.",
             },
             {
               step: 2,
-              title: "Register in SAM. gov",
-              details:
-                "Start with SAM registration (see SAM section above). Most FEMA contractors still use SAM for federal contracting visibility.",
+              title: "DHS Event Registration",
+              details: "Register your company at the DHS Vendor Portal (linked below).",
             },
             {
               step: 3,
-              title: "Obtain Required Insurance",
-              details:
-                "FEMA requires proof of liability insurance. General liability ($1M–$2M typical) is the bare minimum. Some work requires additional coverage (environmental, equipment, etc.).",
+              title: "Debris Contractor Registry",
+              details: "If you do debris removal, register specifically for the Debris Removal Contractor Registry.",
             },
             {
               step: 4,
-              title: "Document Your Qualifications",
-              details:
-                "Compile licenses, certifications, past performance references, and equipment lists. FEMA wants to know what you can actually do and who can vouch for you.",
-            },
-            {
-              step: 5,
-              title: "Register at DHS Event Registration",
-              details:
-                "Visit event. dhs.gov and create a profile. List your company, services offered, geographic availability, and capabilities.",
-            },
-            {
-              step: 6,
-              title: "During Active Disasters, Check FedBizOpps/SAM. gov",
-              details:
-                "When disasters occur, FEMA posts opportunities on SAM.gov. Monitor for your region.  Responses are typically due within 24–72 hours.",
-            },
-            {
-              step: 7,
-              title: "Respond Quickly & Thoroughly",
-              details:
-                "Disaster work moves fast. Have your standard proposal, pricing, and capability statement ready to adapt and submit immediately when opportunities post.",
-            },
-            {
-              step: 8,
-              title: "Engage with FEMA Liaisons",
-              details:
-                "Each FEMA region has contracting liaisons and small business coordinators. Reach out proactively.  Relationship-building here really pays off.",
-            },
-            {
-              step: 9,
-              title: "Track Performance Metrics",
-              details:
-                "FEMA cares about execution speed and quality. Every contract is a reference for the next. Document your wins and testimonials.",
-            },
-            {
-              step: 10,
-              title: "Maintain Active Status",
-              details:
-                "Unlike SAM (annual renewal), FEMA registration is ongoing. But certifications and insurance expire. Keep everything current year-round.",
+              title: "Monitor Opportunities",
+              details: "During disasters, check SAM.gov and local notices. Speed of response is everything.",
             },
           ].map((item) => (
-            <div key={item. step} className="flex gap-4">
+            <div key={item.step} className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-white font-semibold text-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gov-navy text-sm font-semibold text-white">
                   {item.step}
                 </div>
               </div>
@@ -584,22 +446,8 @@ function FEMASection() {
         </div>
       </div>
 
-      <Card className="p-6 border-gov-red bg-red-50">
-        <h4 className="font-semibold text-slate-900 flex items-center gap-2">
-          <AlertCircle className="h-5 w-5 text-gov-red" />
-          FEMA Contracting Pitfalls
-        </h4>
-        <ul className="mt-3 space-y-2 text-sm text-slate-700">
-          <li>❌ <strong>Submitting proposals with outdated insurance dates: </strong> FEMA vets this immediately.  If your coverage expired, you're disqualified.</li>
-          <li>❌ <strong>Overpromising on timelines:</strong> Disaster work is about execution.  If you say you can deploy in 24 hours but can't, agencies won't call back.</li>
-          <li>❌ <strong>Not having past performance: </strong> Your first disaster contract is hard.  Do smaller work first, then use it as a reference.</li>
-          <li>❌ <strong>Ignoring regional requirements:</strong> Some disaster zones have local hiring preferences or union requirements. Read solicitations carefully.</li>
-          <li>❌ <strong>Not maintaining your contact info:</strong> During active disasters, agencies call. If they can't reach you, the opportunity goes to someone else.</li>
-        </ul>
-      </Card>
-
       <div>
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">FEMA Resources & Tools</h4>
+        <h4 className="mb-4 text-lg font-semibold text-slate-900">FEMA Resources</h4>
         <div className="grid gap-3">
           {femaResources.map((resource) => (
             <ResourceLinkCard key={resource.url} resource={resource} />
@@ -612,32 +460,29 @@ function FEMASection() {
 
 function CTA() {
   return (
-    <Card className="p-8 border-2 border-gov-navy bg-slate-50" hover={false}>
-      <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
+    <Card className="border-2 border-gov-navy bg-slate-50 p-8" hover={false}>
+      <div className="grid items-center gap-6 lg:grid-cols-2">
         <div>
-          <h3 className="text-2xl font-bold text-slate-900">
-            Ready to Win Government Contracts?
-          </h3>
+          <h3 className="text-2xl font-bold text-slate-900">Want this done right?</h3>
           <p className="mt-3 text-slate-600">
-            We've outlined the free path above. But navigating SAM, DSBS certifications, and disaster contracting while running your business is no small task. That's where we come in.
+            Navigating SAM, DSBS, and FEMA registrations while running your business is a headache.
+            One mistake can cost you a contract.
           </p>
           <p className="mt-2 text-slate-600">
-            Our team handles the heavy lifting—ensuring your registrations are perfect, your certifications are current, and your qualifications shine where government agencies look.  Let us turn compliance into competitive advantage.
+            Our team handles the heavy lifting—ensuring your registrations are perfect, compliant, and optimized.
           </p>
         </div>
         <div className="space-y-3">
           <div className="rounded-2xl border-2 border-gov-red bg-red-50 p-4">
-            <p className="text-sm font-semibold text-slate-900">What We Do Differently</p>
+            <p className="text-sm font-semibold text-slate-900">What We Do</p>
             <ul className="mt-2 space-y-1 text-sm text-slate-700">
-              <li>✓ Full SAM optimization & ongoing maintenance</li>
-              <li>✓ SBA certification applications & renewals</li>
-              <li>✓ Disaster contracting capability development</li>
-              <li>✓ Market intelligence & bid capture strategy</li>
-              <li>✓ Proposal review & competitive positioning</li>
+              <li>✓ Full SAM optimization & maintenance</li>
+              <li>✓ SBA certification applications (8a, WOSB, VOSB)</li>
+              <li>✓ Disaster contracting capability statements</li>
             </ul>
           </div>
           <a href="/contact" className="block">
-            <Button className="w-full bg-gov-navy hover:bg-gov-navy/90 text-white">
+            <Button className="w-full bg-gov-navy text-white hover:bg-gov-navy/90">
               Schedule a Consultation
             </Button>
           </a>
@@ -647,189 +492,91 @@ function CTA() {
   );
 }
 
-export default function SAMDBSFemaResourcePage() {
+export default function ResourceSAMDBSFema() {
   const [expandedSection, setExpandedSection] = useState<string>("sam");
-
-  const sections:  Section[] = [
-    {
-      id: "sam",
-      title:  "SAM Registration",
-      icon: null,
-      content: <SAMSection />,
-    },
-    {
-      id: "dsbs",
-      title: "DSBS & SBA Certifications",
-      icon: null,
-      content: <DSBSSection />,
-    },
-    {
-      id: "fema",
-      title: "FEMA & Disaster Contracting",
-      icon: null,
-      content:  <FEMASection />,
-    },
+  const sections: Section[] = [
+    { id: "sam", title: "SAM Registration", content: <SAMSection /> },
+    { id: "dsbs", title: "DSBS & SBA Certifications", content: <DSBSSection /> },
+    { id: "fema", title: "FEMA & Disaster Contracting", content: <FEMASection /> },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-white px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl font-bold text-slate-900 sm: text-5xl">
-              SAM, DSBS & FEMA Registration Guide
-            </h1>
-            <p className="mt-4 text-lg text-slate-600">
-              Your complete, free resource for understanding and completing federal contractor registration.  We've outlined everything you need to know to get registered, certified, and ready to win government contracts.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="mt-6 grid gap-3 sm:grid-cols-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            {[
-              { label: "Free Resources", value: "20+" },
-              { label: "Step-by-Step Guides", value: "30+" },
-              { label: "Government Links", value: "Official" },
-            ].map((stat) => (
-              <Card key={stat.label} className="p-4 text-center">
-                <p className="text-2xl font-bold text-gov-navy">{stat.value}</p>
-                <p className="text-sm text-slate-600">{stat.label}</p>
-              </Card>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          {/* Accordion Sections */}
-          <div className="space-y-3">
-            {sections.map((section, idx) => (
-              <motion.div
-                key={section. id}
-                initial={{ opacity:  0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-              >
-                <button
-                  onClick={() =>
-                    setExpandedSection(expandedSection === section.id ? "" : section.id)
-                  }
-                  className="w-full"
-                >
-                  <Card
-                    className={`p-6 transition ${
-                      expandedSection === section.id
-                        ? "border-gov-navy bg-slate-50"
-                        : "border-slate-200 hover:border-gov-navy"
-                    }`}
-                    hover={expandedSection !== section.id}
-                  >
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="text-left">
-                        <h2 className="text-xl font-bold text-slate-900">
-                          {section.title}
-                        </h2>
-                      </div>
-                      {expandedSection === section.id ?  (
-                        <ChevronUp className="h-5 w-5 text-gov-navy flex-shrink-0" />
-                      ) : (
-                        <ChevronDown className="h-5 w-5 text-slate-400 flex-shrink-0" />
-                      )}
-                    </div>
-                  </Card>
-                </button>
-
-                {expandedSection === section. id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height:  0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-3 overflow-hidden"
-                  >
-                    <div className="rounded-2xl border border-slate-200 bg-white p-8">
-                      {section.content}
-                    </div>
-                  </motion. div>
-                )}
-              </motion.div>
-            ))}
+    <>
+      <Helmet>
+        <title>SAM, DSBS & FEMA Registration — GovCon Inc.</title>
+      </Helmet>
+      <div className="min-h-screen bg-white">
+        <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-white px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">SAM, DSBS & FEMA Guide</h1>
+              <p className="mt-4 text-lg text-slate-600">
+                Your complete, free resource for federal contractor registration. Get registered, certified,
+                and ready to win.
+              </p>
+            </motion.div>
           </div>
+        </section>
 
-          {/* CTA Section */}
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <CTA />
-          </motion.div>
-
-          {/* FAQ Section */}
-          <motion. section
-            className="mt-12"
-            initial={{ opacity: 0, y:  20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
-              Frequently Asked Questions
-            </h2>
+        <section className="px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
             <div className="space-y-3">
-              {[
-                {
-                  q: "How long does SAM registration take?",
-                  a:  "Typically 24–48 hours from submission.  However, if there are errors, the SBA may request clarification, adding 5–10 days.",
-                },
-                {
-                  q: "Do I need all three registrations?",
-                  a:  "SAM is mandatory for federal contracting.  DSBS (SBA certifications) depends on your business size and status—required for set-asides if you're small.  FEMA is optional unless you want disaster recovery work.",
-                },
-                {
-                  q: "How much does it cost?",
-                  a: "All three are 100% free. If someone charges you, you're being scammed. Watch out for SAM registration 'services' that claim to speed up the process.",
-                },
-                {
-                  q: "What's the difference between UEI and DUNS?",
-                  a: "DUNS is an old identifier from D&B (now being phased out). UEI (Unique Entity Identifier) is the new federal standard. Both identify your business to the government.",
-                },
-                {
-                  q: "Can I renew my SAM registration early?",
-                  a: "No, SAM doesn't allow early renewal. Renewal windows open 120 days before expiration. Mark your calendar and renew right when the window opens to avoid lapsing.",
-                },
-                {
-                  q: "What if I have multiple locations?",
-                  a: "You register one entity in SAM with a primary location. You can add additional locations, but only one is your 'principal place of business' for contracting purposes.",
-                },
-              ].map((faq, idx) => (
-                <Card key={idx} className="p-5">
-                  <details className="cursor-pointer group">
-                    <summary className="flex items-center gap-3 font-semibold text-slate-900 hover:text-gov-blue transition">
-                      <span className="text-gov-navy group-open: text-gov-red transition">
-                        ▶
-                      </span>
-                      {faq.q}
-                    </summary>
-                    <p className="mt-3 text-sm text-slate-600 ml-5">{faq.a}</p>
-                  </details>
-                </Card>
+              {sections.map((section, idx) => (
+                <motion.div
+                  key={section.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                >
+                  <button
+                    onClick={() => setExpandedSection(expandedSection === section.id ? "" : section.id)}
+                    className="w-full"
+                  >
+                    <Card
+                      className={\`p-6 transition \${
+                        expandedSection === section.id
+                          ? "border-gov-navy bg-slate-50"
+                          : "border-slate-200 hover:border-gov-navy"
+                      }\`}
+                      hover={expandedSection !== section.id}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <h2 className="text-left text-xl font-bold text-slate-900">{section.title}</h2>
+                        {expandedSection === section.id ? (
+                          <ChevronUp className="h-5 w-5 flex-shrink-0 text-gov-navy" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 flex-shrink-0 text-slate-400" />
+                        )}
+                      </div>
+                    </Card>
+                  </button>
+                  {expandedSection === section.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-3 overflow-hidden"
+                    >
+                      <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">{section.content}</div>
+                    </motion.div>
+                  )}
+                </motion.div>
               ))}
             </div>
-          </motion.section>
-        </div>
-      </section>
-    </div>
+
+            <motion.div
+              className="mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <CTA />
+            </motion.div>
+          </div>
+        </section>
+      </div>
+    </>
   );
+}`
 }
