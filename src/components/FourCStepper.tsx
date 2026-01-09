@@ -1,103 +1,147 @@
-import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
-import Card from "./Card";
+{
+type: "file_create",
+fileName: "src/components/FourCStepper.tsx",
+fileContent: `import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "./cn";
+import { ShieldCheck, Target, Link2, Briefcase, ChevronRight } from "lucide-react";
 
-const STEPS = [
+// The 4 C's Data derived from your internal spreadsheets
+const steps = [
   {
-    key: "concept",
-    name: "Concept",
-    headline: "Define the pursuit thesis.",
-    body:
-      "We map your market, agencies, NAICS, and positioning so you’re not “spraying and praying.”",
+    id: "compliance",
+    label: "Compliance",
+    icon: ShieldCheck,
+    color: "bg-emerald-600",
+    description: "The Foundation. We ensure you are legal, registered, and set aside-ready.",
+    tasks: [
+      { name: "Kickoff Consultation", type: "Strategy" },
+      { name: "SAM.gov Registration", type: "Processing" },
+      { name: "DSBS & FEMA Profiles", type: "Processing" },
+      { name: "SBA Certification Check", type: "Strategy" }
+    ]
   },
   {
-    key: "compliance",
-    name: "Compliance",
-    headline: "Get compliant and stay compliant.",
-    body:
-      "SAM.gov, DSBS, certifications, and registrations — built clean, verified, and maintained.",
+    id: "capture",
+    label: "Capture",
+    icon: Target,
+    color: "bg-gov-blue",
+    description: "The Hunt. Identifying the right opportunities before they hit the street.",
+    tasks: [
+      { name: "Capability Statement Design", type: "Marketing" },
+      { name: "Pipeline Construction", type: "Strategy" },
+      { name: "Competitor Analysis", type: "Data" },
+      { name: "Agency Forecasting", type: "Strategy" }
+    ]
   },
   {
-    key: "consulting",
-    name: "Consulting",
-    headline: "Operate the win engine.",
-    body:
-      "Opportunity validation, win probability, capture plays, and proposal quality control (red team).",
+    id: "connect",
+    label: "Connect",
+    icon: Link2,
+    color: "bg-indigo-600",
+    description: "The Pitch. Putting your solution in front of the decision makers.",
+    tasks: [
+      { name: "Proposal Development", type: "Writing" },
+      { name: "Past Performance Formatting", type: "Writing" },
+      { name: "Marketing Outreach", type: "Marketing" },
+      { name: "Contracting Officer Intros", type: "Sales" }
+    ]
   },
   {
-    key: "continuity",
-    name: "Continuity",
-    headline: "Scale the machine.",
-    body:
-      "Turn wins/losses into process improvements, automation, and repeatable growth — prime-ready.",
-  },
-] as const;
+    id: "consulting",
+    label: "Consulting",
+    icon: Briefcase,
+    color: "bg-gov-crimson",
+    description: "The Growth. Scaling your operations and managing complex vehicles.",
+    tasks: [
+      { name: "GSA Schedule Management", type: "Admin" },
+      { name: "Project Liftoff Support", type: "Ops" },
+      { name: "Quarterly Reviews", type: "Strategy" },
+      { name: "Compliance Audits", type: "Legal" }
+    ]
+  }
+];
 
 export default function FourCStepper() {
-  const [active, setActive] = useState<(typeof STEPS)[number]["key"]>("concept");
-  const step = useMemo(() => STEPS.find((s) => s.key === active)!, [active]);
+  const [activeStep, setActiveStep] = useState("compliance");
+
+  const activeData = steps.find(s => s.id === activeStep);
 
   return (
-    <div className="grid gap-4 lg:grid-cols-5">
-      <div className="lg:col-span-2">
-        <div className="grid gap-2">
-          {STEPS.map((s, idx) => {
-            const isActive = s.key === active;
-            return (
-              <button
-                key={s.key}
-                onClick={() => setActive(s.key)}
-                className={cn(
-                  "focus-ring rounded-2xl border px-4 py-4 text-left transition",
-                  isActive ? "border-gov-blue bg-slate-50" : "border-slate-200 bg-white hover:bg-slate-50"
-                )}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold tracking-wide text-slate-500">
-                      Step {idx + 1}
-                    </p>
-                    <p className="mt-1 text-base font-semibold text-slate-900">{s.name}</p>
-                  </div>
-                  <div className={cn("h-2.5 w-2.5 rounded-full", isActive ? "bg-gov-crimson" : "bg-slate-300")} />
-                </div>
-              </button>
-            );
-          })}
-        </div>
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      {/* Step Navigation */}
+      <div className="flex border-b border-slate-200 divide-x divide-slate-200 overflow-x-auto scrollbar-hide">
+        {steps.map((step) => {
+          const isActive = activeStep === step.id;
+          return (
+            <button
+              key={step.id}
+              onClick={() => setActiveStep(step.id)}
+              className={cn(
+                "flex-1 flex items-center justify-center gap-2 py-4 px-4 min-w-[140px] transition-all duration-300 relative",
+                isActive ? "bg-slate-50 text-slate-900" : "bg-white text-slate-500 hover:text-slate-700"
+              )}
+            >
+              <div className={cn(
+                "h-8 w-8 rounded-lg flex items-center justify-center transition-colors",
+                isActive ? step.color + " text-white" : "bg-slate-100 text-slate-400"
+              )}>
+                <step.icon size={16} />
+              </div>
+              <span className="font-bold text-sm">{step.label}</span>
+              {isActive && (
+                <motion.div 
+                  layoutId="activeTab"
+                  className={cn("absolute bottom-0 left-0 w-full h-1", step.color)}
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
 
-      <motion.div
-        key={step.key}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="lg:col-span-3"
-      >
-        <Card className="p-6">
-          <p className="text-sm font-semibold tracking-wide text-gov-blue">The 4 C’s Framework</p>
-          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">{step.headline}</h3>
-          <p className="mt-3 text-slate-600">{step.body}</p>
+      {/* Content Area */}
+      <div className="p-8">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.2 }}
+            className="grid lg:grid-cols-2 gap-8 items-center"
+          >
+            {/* Left: Description */}
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">{activeData?.label}</h3>
+              <p className="text-lg text-slate-600 mb-6">{activeData?.description}</p>
+              
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold text-slate-600">
+                <span className={cn("h-2 w-2 rounded-full", activeData?.color)}></span>
+                Phase Priority: High
+              </div>
+            </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <p className="text-xs font-semibold tracking-wide text-slate-500">Deliverable</p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">Actionable Next Steps</p>
-              <p className="mt-2 text-sm text-slate-600">
-                You leave each phase with clear outputs you can reuse — not “advice” you forget next week.
-              </p>
+            {/* Right: Tasks List */}
+            <div className="bg-slate-50 rounded-xl p-6 border border-slate-100">
+              <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">
+                Core Deliverables
+              </h4>
+              <div className="space-y-3">
+                {activeData?.tasks.map((task, idx) => (
+                  <div key={idx} className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                    <span className="font-medium text-slate-800 text-sm">{task.name}</span>
+                    <span className="text-[10px] font-bold px-2 py-1 rounded bg-slate-100 text-slate-500">
+                      {task.type}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <p className="text-xs font-semibold tracking-wide text-slate-500">Control</p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">Quality Gates</p>
-              <p className="mt-2 text-sm text-slate-600">
-                We stop bad pursuits early, tighten compliance, and ship proposals that won’t embarrass you.
-              </p>
-            </div>
-          </div>
-        </Card>
-      </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
+}`
 }
