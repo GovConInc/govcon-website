@@ -1,7 +1,3 @@
-{
-type: "file_update",
-fileName: "src/routes/Services.tsx",
-fileContent: `import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Shield, Target, PenTool, Database, Users, AlertTriangle, ArrowRight } from "lucide-react";
@@ -295,4 +291,4 @@ export default function Services({ initialTab = "all" }: { initialTab?: string }
     </>
   );
 }`
-}
+
