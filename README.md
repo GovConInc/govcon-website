@@ -38,24 +38,7 @@ You can still override them as env vars if needed.
 
 SPA routing is handled via `public/_redirects`.
 
-## BigQuery authentication (keep it private)
 
-You need a **Google Service Account key JSON** (this is the “authorization JSON” you remembered).
-
-Create/download it in GCP:
-- IAM & Admin → Service Accounts → (create/select) → Keys → Add key → Create new key → JSON
-
-### Permissions the service account needs
-- **BigQuery Job User** (project level)
-- **BigQuery Data Viewer** (dataset `cc` or project level)
-
-### Recommended: store the whole JSON as a secret
-
-Cloudflare Pages → Settings → Environment variables → Add a **secret**:
-
-- `GOOGLE_SERVICE_ACCOUNT_JSON` = paste the entire JSON contents
-
-That’s it (table defaults are already set).
 
 ### Alternative: split fields
 
