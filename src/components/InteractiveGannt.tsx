@@ -1,7 +1,4 @@
-{
-type: "file_update",
-fileName: "src/components/InteractiveGantt.tsx",
-fileContent: `import { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "./cn";
 import { Clock, CheckCircle2, AlertCircle } from "lucide-react";
@@ -48,7 +45,7 @@ export default function InteractiveGantt() {
             <div
               key={task.id}
               className="relative flex flex-col items-center justify-end pb-2 group"
-              style={{ gridColumn: \`span \${Math.ceil(task.width / 10)}\` }} // Approximate scaling
+              style={{ gridColumn: `span ${Math.ceil(task.width / 10)}` }} // Approximate scaling
               onMouseEnter={() => setActiveTask(task.id)}
               onMouseLeave={() => setActiveTask(null)}
             >
@@ -60,7 +57,7 @@ export default function InteractiveGantt() {
                     ? task.type === "Advisor" ? "border-gov-blue bg-gov-blue scale-125" : "border-emerald-500 bg-emerald-500 scale-125"
                     : task.type === "Advisor" ? "border-gov-blue" : "border-emerald-500"
                 )}
-                layoutId={\`node-\${task.id}\`}
+                layoutId={`node-${task.id}`}
               />
 
               {/* Label */}
@@ -97,5 +94,4 @@ export default function InteractiveGantt() {
       </div>
     </div>
   );
-}`
 }
