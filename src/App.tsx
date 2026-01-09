@@ -6,6 +6,7 @@ import Services from "./routes/Services";
 import About from "./routes/About";
 import Contact from "./routes/Contact";
 import NotFound from "./routes/NotFound";
+import ResourceSAMDBSFema from "./routes/ResourceSAMDBSFema";
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
 
         {/* future pages (kept as routes so the menu can be "to a T") */}
-        <Route path="/resources/sam-dsbs-fema" element={<Resources initialSection="sam" />} />
+        <Route path="/resources/sam-dsbs-fema" element={<ResourceSAMDBSFema />} />
         <Route path="/resources/gsa-vehicles" element={<Resources initialSection="gsa" />} />
         <Route path="/resources/understand-opportunities" element={<Resources initialSection="opps" />} />
         <Route path="/resources/find-bid-opportunities" element={<Resources initialSection="bids" />} />
