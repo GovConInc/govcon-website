@@ -1,7 +1,0 @@
-name = "govcon-inc-site"
-compatibility_date = "2025-12-15"
-
-# KV binding example:
-# [[kv_namespaces]]
-# binding = "LEADS"
-# id = "xxxx"
