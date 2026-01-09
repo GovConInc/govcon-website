@@ -1,7 +1,4 @@
-{
-type: "file_create",
-fileName: "src/components/FourCStepper.tsx",
-fileContent: `import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "./cn";
 import { ShieldCheck, Target, Link2, Briefcase, ChevronRight } from "lucide-react";
@@ -143,5 +140,4 @@ export default function FourCStepper() {
       </div>
     </div>
   );
-}`
 }
