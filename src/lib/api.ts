@@ -34,3 +34,27 @@ export async function fetchRss(urlOverride?: string): Promise<RSSResponse> {
   if (!res.ok) throw new Error(`RSS fetch failed (${res.status})`);
   return res.json();
 }
+
+export type ContactPayload = {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  message: string;
+};
+
+export async function submitContact(payload: ContactPayload) {
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(text || `Contact submission failed (${res.status})`);
+  }
+
+  return (await res.json()) as { ok: boolean; id?: string; message?: string };
+}
+
