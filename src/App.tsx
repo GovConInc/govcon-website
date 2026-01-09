@@ -1,7 +1,4 @@
-{
-type: "file_update",
-fileName: "src/App.tsx",
-fileContent: `import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./routes/Home";
 import Services from "./routes/Services";
@@ -52,5 +49,4 @@ export default function App() {
       </Route>
     </Routes>
   );
-}`
 }
