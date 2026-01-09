@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "./cn";
-import { ShieldCheck, Target, Link2, Briefcase, ChevronRight } from "lucide-react";
+import { ShieldCheck, Target, Link2, Briefcase } from "lucide-react";
 
 // The 4 C's Data derived from your internal spreadsheets
 const steps = [
