@@ -1,12 +1,9 @@
-{
-type: "file_create",
-fileName: "src/routes/ResourceProposals.tsx",
-fileContent: `import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import Section from "../components/Section";
 import Card from "../components/Card";
 import { Button, LinkButton } from "../components/Button";
 
-const COPY_TEXT = \`PAST PERFORMANCE QUESTIONNAIRE (PPQ)
+const COPY_TEXT = `PAST PERFORMANCE QUESTIONNAIRE (PPQ)
 
 1. Contract Information
 - Contract Number:
@@ -30,7 +27,7 @@ const COPY_TEXT = \`PAST PERFORMANCE QUESTIONNAIRE (PPQ)
 4. Narrative
 Please briefly describe the scope of work performed and the contractor's ability to solve complex problems during execution.
 
-[Signature Block]\`;
+[Signature Block]`;
 
 export default function ResourceProposals() {
   return (
@@ -133,5 +130,4 @@ export default function ResourceProposals() {
       </Section>
     </>
   );
-}`
 }
