@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "./cn";
-import { Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 const tasks = [
   { id: 1, name: "Kickoff Consultation", days: "Days 1-2", start: 0, width: 6, type: "Advisor", risk: "Low", desc: "Strategy alignment & scheduling." },
