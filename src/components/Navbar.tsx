@@ -21,8 +21,8 @@ export default function Navbar() {
   const primary: NavItem[] = useMemo(
     () => [
       { label: "Home", to: "/" },
-      { 
-        label: "Resources", 
+      {
+        label: "Resources",
         to: "/resources",
         children: [
           { label: "SAM, DSBS & FEMA", to: "/resources/sam-dsbs-fema" },
@@ -30,11 +30,24 @@ export default function Navbar() {
           { label: "Understand Opportunities", to: "/resources/understand-opportunities" },
           { label: "Find Bid Opportunities", to: "/resources/find-bid-opportunities" },
           { label: "Writing Proposals", to: "/resources/writing-proposals" },
-        ]
+        ],
       },
-      { label: "Services", to: "/services" },
-      { label: "About Us", to: "/about" },
-      { label: "Contact Us", to: "/contact" },
+      {
+        label: "Services",
+        to: "/services",
+        children: [
+          { label: "GSA MAS Submission", to: "/services/gsa-mas-submission" },
+          { label: "Contract Management", to: "/services/contract-management" },
+          { label: "OASIS+ & Other Vehicles", to: "/services/oasis-and-others" },
+          { label: "FCP Baseline Upload", to: "/services/fcp-baseline-upload" },
+          { label: "Registration Management", to: "/services/registration-management" },
+          { label: "Capture Management", to: "/services/capture-management" },
+          { label: "Proposal Writing", to: "/services/proposal-writing" },
+          { label: "Process Improvement", to: "/services/process-improvement" },
+        ],
+      },
+      { label: "About", to: "/about" },
+      { label: "Contact", to: "/contact" },
     ],
     []
   );

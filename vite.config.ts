@@ -5,5 +5,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     sourcemap: false,
+    outDir: "dist",
+    emptyOutDir: true,
+  },
+  server: {
+    historyApiFallback: true,
   },
 });

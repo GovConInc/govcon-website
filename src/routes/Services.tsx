@@ -5,7 +5,7 @@ import { FileText, Shield, Target, PenTool, Database, Users, AlertTriangle, Arro
 import Section from "../components/Section";
 import Card from "../components/Card";
 import { Button, LinkButton } from "../components/Button";
-import InteractiveGantt from "../components/InteractiveGantt";
+import InteractiveGantt from "../components/InteractiveGannt";
 import FourCStepper from "../components/FourCStepper";
 import ServicePackages from "../components/ServicePackages";
 import { cn } from "../components/cn";
